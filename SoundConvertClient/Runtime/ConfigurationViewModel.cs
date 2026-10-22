@@ -6,7 +6,7 @@ namespace SoundConvertClient;
 
 public sealed partial class BridgeRuntime
 {
-    string networkMode = "dhcp", networkIp = "192.168.8.73", networkGateway = "192.168.8.1", networkDns = "192.168.8.1", pendingTransaction = "", pendingDevice = "", networkStatus = "未进行网络事务"; int networkPrefix = 24,maximumBufferMs=20;string pendingUsbRevision=""; bool pendingRestartUsb; bool closeToTray = true, startInTray, startAtLogin;
+    string networkMode = "dhcp", networkIp = "192.168.8.73", networkGateway = "192.168.8.1", networkDns = "192.168.8.1", pendingTransaction = "", pendingDevice = "", networkStatus = "未进行网络事务"; int networkPrefix = 24,maximumBufferMs=40;string pendingUsbRevision=""; bool pendingRestartUsb; bool closeToTray = true, startInTray, startAtLogin;
     public int MaximumBufferMs{get=>maximumBufferMs;set{Set(ref maximumBufferMs,value);Changed(nameof(BufferBudgetSummary));}}
     ResamplerQuality resamplingQuality=ResamplerQuality.Balanced;
     public IReadOnlyList<string> ResamplingQualities{get;}=new[]{"低延迟","均衡","高质量"};
