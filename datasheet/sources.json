@@ -1,0 +1,353 @@
+[
+  {
+    "file": "board/hardware/Gerber/Single.zip",
+    "source_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Gerber/Single.zip",
+    "final_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Gerber/Single.zip",
+    "downloaded_at": "2026-10-18T05:58:34.143547+00:00",
+    "bytes": 422097,
+    "sha256": "9211ca20f8925f86ade484081fd774c62d426bb48c9f08cdd8f4610331ff512d",
+    "category": "official-board-hardware"
+  },
+  {
+    "file": "board/hardware/Partlist/BOM-W5500-EVB-Pico2_V100.xlsx",
+    "source_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Partlist/BOM-W5500-EVB-Pico2_V100.xlsx",
+    "final_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Partlist/BOM-W5500-EVB-Pico2_V100.xlsx",
+    "downloaded_at": "2026-10-18T05:58:36.316904+00:00",
+    "bytes": 24135,
+    "sha256": "872e68e825397f31e492a8e3c085d705c43bec93e4315a54e6452800e594dd61",
+    "category": "official-board-hardware"
+  },
+  {
+    "file": "board/hardware/Schematic/SCH-W5500-EVB-Pico2-V100.pdf",
+    "source_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Schematic/SCH-W5500-EVB-Pico2-V100.pdf",
+    "final_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Schematic/SCH-W5500-EVB-Pico2-V100.pdf",
+    "downloaded_at": "2026-10-18T05:58:40.323234+00:00",
+    "bytes": 2149691,
+    "sha256": "c66b353ab439c8e4551b8ba88e61a660d190bf8a4af25224d3f2dc6daf83d409",
+    "category": "official-board-hardware"
+  },
+  {
+    "file": "board/hardware/Schematic/W5500-EVB-Pico2_V100.zip",
+    "source_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Schematic/W5500-EVB-Pico2_V100.zip",
+    "final_url": "https://raw.githubusercontent.com/Wiznet/Hardware-Files-of-WIZnet/e3f0b08d2916cb961c0d723c476b693202c6fe79/02_iEthernet/W5500/W5500-EVB-Pico2_V100/Schematic/W5500-EVB-Pico2_V100.zip",
+    "downloaded_at": "2026-10-18T05:58:53.412206+00:00",
+    "bytes": 75077386,
+    "sha256": "63ef5511fa6ab5e8d08e869e4a55c5460965f0c02a110166337a7d398d016d0f",
+    "category": "official-board-hardware"
+  },
+  {
+    "file": "board/W5500-EVB-Pico2-official.html",
+    "source_url": "https://docs.wiznet.io/Product/Chip/Ethernet/W5500/w5500-evb-pico2",
+    "final_url": "https://docs.wiznet.io/Product/Chip/Ethernet/W5500/w5500-evb-pico2",
+    "downloaded_at": "2026-10-18T05:58:54.634543+00:00",
+    "bytes": 73809,
+    "sha256": "0f46c53602a6aad3deea855581b5eec81db4b14ab2e00eef9352a35b55729fb5",
+    "category": "official-board-page"
+  },
+  {
+    "file": "board/images/dimension-w5500-evb-pico2-efed3f43357f259d1d0f903c2be9eec7.png",
+    "source_url": "https://docs.wiznet.io/assets/images/dimension-w5500-evb-pico2-efed3f43357f259d1d0f903c2be9eec7.png",
+    "final_url": "https://docs.wiznet.io/assets/images/dimension-w5500-evb-pico2-efed3f43357f259d1d0f903c2be9eec7.png",
+    "downloaded_at": "2026-10-18T05:58:55.749849+00:00",
+    "bytes": 140865,
+    "sha256": "094e456baeea4de91cb78ca242bf0e8087977d6a7fb0b6d2b20345aa6a3b8249",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/images/sch-w5500-evb-pico2-v100-789bda353040ebd9198df2f3b19770e6.png",
+    "source_url": "https://docs.wiznet.io/assets/images/sch-w5500-evb-pico2-v100-789bda353040ebd9198df2f3b19770e6.png",
+    "final_url": "https://docs.wiznet.io/assets/images/sch-w5500-evb-pico2-v100-789bda353040ebd9198df2f3b19770e6.png",
+    "downloaded_at": "2026-10-18T05:58:57.300409+00:00",
+    "bytes": 352683,
+    "sha256": "1b855e9d882df02c502dea2f78d508c7db08f3b61428f3c788dcff272a92b1e5",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/images/w5500-evb-pico2-docs-d5b9eeb6d6e55b16be63850cbab2c222.png",
+    "source_url": "https://docs.wiznet.io/assets/images/w5500-evb-pico2-docs-d5b9eeb6d6e55b16be63850cbab2c222.png",
+    "final_url": "https://docs.wiznet.io/assets/images/w5500-evb-pico2-docs-d5b9eeb6d6e55b16be63850cbab2c222.png",
+    "downloaded_at": "2026-10-18T05:59:00.069061+00:00",
+    "bytes": 623014,
+    "sha256": "0bfd591204cb711e07dae8e3a023987a60cb77376bc73c291a145a5547161b2d",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/images/w5500-evb-pico2-pinout-8c8e5ac528484abeab3e39549a0b1c97.png",
+    "source_url": "https://docs.wiznet.io/assets/images/w5500-evb-pico2-pinout-8c8e5ac528484abeab3e39549a0b1c97.png",
+    "final_url": "https://docs.wiznet.io/assets/images/w5500-evb-pico2-pinout-8c8e5ac528484abeab3e39549a0b1c97.png",
+    "downloaded_at": "2026-10-18T05:59:01.981644+00:00",
+    "bytes": 1086983,
+    "sha256": "012d20abba3b8323f49788407594d8889feef49662926fd01955d9e6cf6c43e7",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AWS_IoT_HTTP_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AWS-C/AWS_IoT_HTTP_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AWS-C/AWS_IoT_HTTP_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:03.684264+00:00",
+    "bytes": 649436,
+    "sha256": "473774ebf2216cb58792d148238f0459a3d45558f14ffe11333cce6c6030bca0",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AWS_IoT_MQTT_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AWS-C/AWS_IoT_MQTT_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AWS-C/AWS_IoT_MQTT_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:06.189267+00:00",
+    "bytes": 863514,
+    "sha256": "96b309126afdf95be61935f56cf905763a926acf26f8e3700bbcf75f3cf82f5e",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AZURE_2CD_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_2CD_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_2CD_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:08.652918+00:00",
+    "bytes": 1562646,
+    "sha256": "9efc99b22bbac764d282bf405eaa8a6073c77e62b761de2885a7e93f57b37b94",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AZURE_client_X509_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_client_X509_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_client_X509_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:10.257455+00:00",
+    "bytes": 1073629,
+    "sha256": "3c9666cd88bec26944dfe327c9605538d64a0cfe51e28cae5e44edb5fdaf8b91",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AZURE_prov_X509_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_prov_X509_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_prov_X509_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:12.274760+00:00",
+    "bytes": 1174966,
+    "sha256": "a4bb34e9a4ca8c8c23d6e293f3f3f94c51498a2f70476e6d8c9730a94a41dcbf",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/AZURE_telemetry_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_telemetry_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-AZURE-C/AZURE_telemetry_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:14.009562+00:00",
+    "bytes": 1119961,
+    "sha256": "6ee4a713e4227588285bca8452078785fd0aeb459bd801ebaadc582cd5b00854",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:15.395457+00:00",
+    "bytes": 406685,
+    "sha256": "521582225d4b15aa9fe5e16d393a0ee6f02c57fb87e385ec991a3e2c90a58211",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/HTTP_Server_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/HTTP_Server_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/HTTP_Server_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:16.965377+00:00",
+    "bytes": 595834,
+    "sha256": "531e3b41353373d24ac5d045d09609e0e74038c5c7d7cdbb20f3b0a0708b0d12",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:18.359400+00:00",
+    "bytes": 639318,
+    "sha256": "062a390c482116437bf4d13cdd9a49d117aceaad120260885dbe27071e041c78",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/MQTT_Publish_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Publish_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Publish_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:20.317993+00:00",
+    "bytes": 636811,
+    "sha256": "191c1e8ff178c7000dd17bb3e958551e591486f1bb7a475bea9ee237df90c7b5",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/MQTT_Publish_Subscribe_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Publish_Subscribe_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Publish_Subscribe_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:22.562136+00:00",
+    "bytes": 684066,
+    "sha256": "0a81fa16db4b0ee1c17a8e395be4251af64bdb005b31e2c83b01505242d4f4f6",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/MQTT_Subscribe_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Subscribe_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/MQTT_Subscribe_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:24.816276+00:00",
+    "bytes": 671607,
+    "sha256": "8260a9d1d36e4d6339d9a8ae936947d4f9f76c9ebc5ece47c90d04f3676a8f56",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/NETBIOS_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/NETBIOS_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/NETBIOS_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:26.175271+00:00",
+    "bytes": 553015,
+    "sha256": "7dd5e1a0efff8fdcdfae563bbe4367912d46ced44642494ca3357203e8344a84",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/SNTP_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/SNTP_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/SNTP_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:27.471663+00:00",
+    "bytes": 432006,
+    "sha256": "b81a744763c0cd7b2aabd533ea03a864963e2b62abbd70f07aed91be65df2eef",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/TCP_Client_over_SSL_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/TCP_Client_over_SSL_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/TCP_Client_over_SSL_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:28.949894+00:00",
+    "bytes": 826889,
+    "sha256": "595f3362a503bb12da4d59b527c507b516ef0c6b9ea370fc72fb707667437728",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/TFTP_Client_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/TFTP_Client_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/TFTP_Client_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:30.352850+00:00",
+    "bytes": 548853,
+    "sha256": "ef44995aff94faa9640e049eac873cf272efaaa2e41812b21e04dbfe33b719a2",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/UDP_multicast_receiver_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-C/UDP_multicast_receiver_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-C/UDP_multicast_receiver_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:31.673359+00:00",
+    "bytes": 767064,
+    "sha256": "cb77a7e5a8e218c99ad4bfcd7b5ad37fbb5deab8d51894e22963443e6ee73d80",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/lwIP_DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_DHCP_DNS_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:32.983458+00:00",
+    "bytes": 423924,
+    "sha256": "80cb0fb2e8479e7e4be1537266948f7d9ca8bcdbf32272ffa3c882bec4640cc9",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/lwIP_LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_LOOPBACK_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:34.476578+00:00",
+    "bytes": 635325,
+    "sha256": "29ade3039a8ddbbf2b4ba7c6c274516193177792284b288fd2431bba6fb00b94",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/lwIP_iPerf_EXAMPLE_AN_V100.pdf",
+    "source_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_iPerf_EXAMPLE_AN_V100.pdf",
+    "final_url": "https://docs.wiznet.io/img/application_notes/PICO-LWIP-C/lwIP_iPerf_EXAMPLE_AN_V100.pdf",
+    "downloaded_at": "2026-10-18T05:59:36.128604+00:00",
+    "bytes": 595340,
+    "sha256": "be7a004ca4b0ea74a739385274b3acd4154950392d934aab0b7b475ce24da258",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/mechanical/W5500-EVB-Pico2_V100.step",
+    "source_url": "https://docs.wiznet.io/img/products/3d-step-files/W5500-EVB-Pico2_V100.step",
+    "final_url": "https://docs.wiznet.io/img/products/3d-step-files/W5500-EVB-Pico2_V100.step",
+    "downloaded_at": "2026-10-18T05:59:38.355347+00:00",
+    "bytes": 4911668,
+    "sha256": "f3b7825148d94819a5da8691bf6adafeac8fa1fa08d90af95b245932d71ed281",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/Certificate-CE-W5500-EVB-Pico2.pdf",
+    "source_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Certificate-CE-W5500-EVB-Pico2.pdf",
+    "final_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Certificate-CE-W5500-EVB-Pico2.pdf",
+    "downloaded_at": "2026-10-18T05:59:39.390622+00:00",
+    "bytes": 128117,
+    "sha256": "c23d786344a2956d3b5bc5ba812573383a0f1c25a90fd4afbcfb4b3de5cdb58a",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/Certificate-FCC-W5500-EVB-Pico2.pdf",
+    "source_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Certificate-FCC-W5500-EVB-Pico2.pdf",
+    "final_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Certificate-FCC-W5500-EVB-Pico2.pdf",
+    "downloaded_at": "2026-10-18T05:59:40.315853+00:00",
+    "bytes": 76176,
+    "sha256": "aef54a244e9f1f0f265ad6d6d2ddba1b002762ed7f976ed4b4002bb7285eb950",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/Test-Report-CE-W5500-EVB-Pico2.pdf",
+    "source_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Test-Report-CE-W5500-EVB-Pico2.pdf",
+    "final_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Test-Report-CE-W5500-EVB-Pico2.pdf",
+    "downloaded_at": "2026-10-18T05:59:42.946970+00:00",
+    "bytes": 3286313,
+    "sha256": "165cf86ce7766fa5829011047a4913272fe60b074ea0cb34a0226d63292094e5",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "board/references/Test-Report-FCC-W5500-EVB-Pico2.pdf",
+    "source_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Test-Report-FCC-W5500-EVB-Pico2.pdf",
+    "final_url": "https://docs.wiznet.io/img/products/w5500-evb-pico2/Test-Report-FCC-W5500-EVB-Pico2.pdf",
+    "downloaded_at": "2026-10-18T05:59:44.665230+00:00",
+    "bytes": 903899,
+    "sha256": "3c279e70ed2659e144c29797ad9460fa1c98f0f63774c7016025eac9cb103df7",
+    "category": "official-board-linked-resource"
+  },
+  {
+    "file": "chips/RP2350/rp2350-datasheet.pdf",
+    "source_url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "final_url": "https://pip-assets.raspberrypi.com/categories/1214-rp2350/documents/RP-008373-DS-3-rp2350-datasheet.pdf",
+    "downloaded_at": "2026-10-18T05:59:52.380840+00:00",
+    "bytes": 11094994,
+    "sha256": "a638d6780da919162660691bfa02c6dcf7c2a0b6e9f18e2d7519c80b664a2e39",
+    "category": "chip-datasheet"
+  },
+  {
+    "file": "chips/W5500/W5500_ds_v110e.pdf",
+    "source_url": "https://docs.wiznet.io/assets/files/W5500_ds_v110e-226ffec190c588b69f88d629789585e1.pdf",
+    "final_url": "https://docs.wiznet.io/assets/files/W5500_ds_v110e-226ffec190c588b69f88d629789585e1.pdf",
+    "downloaded_at": "2026-10-18T05:59:55.224044+00:00",
+    "bytes": 1893745,
+    "sha256": "7b826b808084ccd986bcc22904c00a07a508ef42fb93d079fe7150a4c4f1a63d",
+    "category": "chip-datasheet"
+  },
+  {
+    "file": "chips/SGM62112/SGM62112.pdf",
+    "source_url": "https://www.sg-micro.com/rect/assets/75104b67-e360-45a6-befa-2a9b45a6c7b7/SGM62112.pdf",
+    "final_url": "https://www.sg-micro.com/rect/assets/75104b67-e360-45a6-befa-2a9b45a6c7b7/SGM62112.pdf",
+    "downloaded_at": "2026-10-18T06:00:15.812823+00:00",
+    "bytes": 1259811,
+    "sha256": "a7e402bc98595b5056cee8ace601a3d634bb44fe366a4223ea6e2affc4d5912c",
+    "category": "manufacturer-datasheet"
+  },
+  {
+    "file": "components/L2N7002/L2N7002LT1G.pdf",
+    "source_url": "https://www.lrc.cn/Upload/PDF/Product/MOS/L2N7002LT1G.pdf",
+    "final_url": "https://www.lrc.cn/Upload/PDF/Product/MOS/L2N7002LT1G.pdf",
+    "downloaded_at": "2026-10-18T06:00:18.580830+00:00",
+    "bytes": 489167,
+    "sha256": "e35e91d381db759cdcf3f89d8bafb074b5a1eda0189c8eaf74d56325cf4c19e9",
+    "category": "manufacturer-datasheet"
+  },
+  {
+    "file": "chips/W25Q16JV/W25Q16JV_SPI_RevJ.pdf",
+    "source_url": "https://www.winbond.com/resource-files/W25Q16JV%20SPI%20RevJ%2005202026%20Plus.pdf",
+    "final_url": "https://www.winbond.com/resource-files/W25Q16JV%20SPI%20RevJ%2005202026%20Plus.pdf",
+    "downloaded_at": "2026-10-18T06:01:15.011020+00:00",
+    "bytes": 3248710,
+    "sha256": "0a7d2859578bdf11ca5519d444c11cdc790fcbe6921989689b9c1ae4599780ef",
+    "category": "manufacturer-datasheet"
+  }
+]

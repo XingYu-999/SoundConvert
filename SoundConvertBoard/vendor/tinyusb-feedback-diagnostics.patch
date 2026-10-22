@@ -1,0 +1,46 @@
+diff --git a/src/class/audio/audio_device.c b/src/class/audio/audio_device.c
+index 928358b91..0ab6a8756 100644
+--- a/src/class/audio/audio_device.c
++++ b/src/class/audio/audio_device.c
+@@ -639,6 +639,20 @@ bool tud_audio_n_fb_set(uint8_t func_id, uint32_t feedback) {
+ 
+   return true;
+ }
++
++bool tud_audio_n_get_feedback_state(uint8_t func_id, audio_feedback_state_t* state) {
++  TU_VERIFY(state && func_id < CFG_TUD_AUDIO && _audiod_fct[func_id].p_desc != NULL);
++  audiod_function_t* audio = &_audiod_fct[func_id];
++  state->value_q16 = audio->feedback.value;
++  state->method = audio->feedback.compute_method;
++  state->fifo_average_bytes = 0;
++  state->fifo_threshold_bytes = 0;
++  if (state->method == AUDIO_FEEDBACK_METHOD_FIFO_COUNT) {
++    state->fifo_average_bytes = (uint16_t)(audio->feedback.compute.fifo_count.fifo_lvl_avg >> 16);
++    state->fifo_threshold_bytes = audio->feedback.compute.fifo_count.fifo_lvl_thr;
++  }
++  return true;
++}
+ #endif
+ 
+ uint8_t tud_audio_n_version(uint8_t func_id) {
+diff --git a/src/class/audio/audio_device.h b/src/class/audio/audio_device.h
+index 41cc969d1..e03bd05b8 100644
+--- a/src/class/audio/audio_device.h
++++ b/src/class/audio/audio_device.h
+@@ -321,6 +321,16 @@ typedef struct {
+   };
+ } audio_feedback_params_t;
+ 
++// UAB diagnostic extension: read-only internal 16.16 feedback and FIFO byte units.
++// The caller must serialize with USB IRQ when a coherent multi-field snapshot is required.
++typedef struct {
++  uint32_t value_q16;
++  uint16_t fifo_average_bytes;
++  uint16_t fifo_threshold_bytes;
++  uint8_t method;
++} audio_feedback_state_t;
++bool tud_audio_n_get_feedback_state(uint8_t func_id, audio_feedback_state_t* state);
++
+ // Invoked when needed to set feedback parameters
+ void tud_audio_feedback_params_cb(uint8_t func_id, uint8_t alt_itf, audio_feedback_params_t* feedback_param);
+ 

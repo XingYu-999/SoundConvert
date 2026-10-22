@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.ManualConnectDialog" x:DataType="vm:ManualConnectViewModel"
+        Title="手动连接开发板" Width="500" SizeToContent="Height" CanResize="False" WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="24" Spacing="14">
+    <TextBlock Text="手动连接开发板" Classes="title"/>
+    <TextBlock Text="通过当前选择的电脑网卡连接" Classes="caption"/>
+    <TextBlock Text="{Binding AdapterSummary}" TextWrapping="Wrap"/>
+    <StackPanel Spacing="6" IsEnabled="{Binding CanSubmit}">
+      <TextBlock Text="开发板 IPv4" Classes="fieldLabel"/>
+      <TextBox Name="AddressBox" Text="{Binding Address}" PlaceholderText="例如 192.168.0.22" AutomationProperties.Name="开发板 IPv4"/>
+      <TextBlock Text="{Binding AddressError}" Foreground="{StaticResource DangerText}" TextWrapping="Wrap"/>
+      <TextBlock Text="TCP 控制端口" Classes="fieldLabel"/>
+      <TextBox Text="{Binding Port}" AutomationProperties.Name="TCP 控制端口"/>
+      <TextBlock Text="{Binding PortError}" Foreground="{StaticResource DangerText}" TextWrapping="Wrap"/>
+    </StackPanel>
+    <TextBlock Text="{Binding Status}" TextWrapping="Wrap"/>
+    <ProgressBar Height="3" IsIndeterminate="True" IsVisible="{Binding Busy}"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button Content="{Binding CancelLabel}" Command="{Binding CancelCommand}"/>
+      <Button Content="连接" Classes="primary" Command="{Binding ConnectCommand}" IsEnabled="{Binding CanSubmit}"/>
+    </StackPanel>
+  </StackPanel>
+</Window>
+

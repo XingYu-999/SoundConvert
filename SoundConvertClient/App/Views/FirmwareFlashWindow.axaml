@@ -1,0 +1,67 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SoundConvertClient" xmlns:usb="using:UsbAudioBridge" xmlns:controls="using:SoundConvertClient.Controls"
+        x:Class="SoundConvertClient.Views.FirmwareFlashWindow" x:DataType="vm:FirmwareFlashViewModel"
+        Title="USB 固件烧写" Width="820" Height="820" MinWidth="650" MinHeight="600"
+        WindowStartupLocation="CenterOwner" Background="{StaticResource Canvas}"
+        Icon="avares://SoundConvertClient/Assets/AppIcon.ico" FontFamily="Microsoft YaHei UI, Segoe UI">
+  <Grid RowDefinitions="*,Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="24" Spacing="16">
+        <StackPanel Spacing="6">
+          <TextBlock Text="USB 固件烧写" Classes="title"/>
+          <TextBlock Text="W5500-EVB-Pico2 · RP2350 · UF2" Classes="caption"/>
+        </StackPanel>
+        <Border Classes="card"><StackPanel Spacing="10">
+          <TextBlock Text="1. 让板卡进入 BOOTSEL 模式" Classes="section"/>
+          <TextBlock Text="按住板卡上的 BOOTSEL 按钮，再通过 USB 数据线连接本电脑；出现 RP2350 启动盘后松开按钮。" TextWrapping="Wrap"/>
+          <TextBlock Text="烧写时会中断音频。若 USB 正接在手机或游戏机上，请先换接本电脑。" Classes="caption"/>
+        </StackPanel></Border>
+        <Border Classes="card"><StackPanel Spacing="10">
+          <TextBlock Text="2. 选择固件文件" Classes="section"/>
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBox Name="FirmwareFilePath" Text="{Binding FilePath, Mode=OneWay}" ToolTip.Tip="{Binding FilePath}" IsReadOnly="True" PlaceholderText="请选择本项目的 .uf2 固件" VerticalAlignment="Center"/>
+            <Button Name="ChooseFirmwareButton" Grid.Column="1" Content="选择 UF2…" Command="{Binding ChooseFileCommand}"/>
+          </Grid>
+          <TextBlock Name="FirmwareFileSummary" Text="{Binding FileSummary}" Classes="caption"/>
+          <ProgressBar Height="3" IsIndeterminate="True" IsVisible="{Binding IsLoading}"/>
+          <Expander Header="文件校验信息" IsVisible="{Binding HasFile}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <StackPanel Spacing="8" Margin="0,8,0,0">
+              <TextBlock Text="{Binding FileDetails}" Classes="mono"/>
+              <TextBlock Text="SHA256（所选文件）" Classes="caption"/>
+              <SelectableTextBlock Text="{Binding Sha256}" TextWrapping="Wrap" FontFamily="Consolas" FontSize="12"/>
+            </StackPanel>
+          </Expander>
+        </StackPanel></Border>
+        <Border Classes="card"><StackPanel Spacing="10">
+          <TextBlock Text="3. 选择目标启动盘" Classes="section"/>
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <controls:NoWheelComboBox Name="BootselDriveSelector" ItemsSource="{Binding Drives}" SelectedItem="{Binding SelectedDrive}"
+                IsEnabled="{Binding CanSelectDrive}" PlaceholderText="请选择要烧写的 RP2350 启动盘" HorizontalAlignment="Stretch"
+                AutomationProperties.Name="目标 RP2350 启动盘">
+              <ComboBox.ItemTemplate><DataTemplate x:DataType="usb:BootselDrive"><TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap"/></DataTemplate></ComboBox.ItemTemplate>
+            </controls:NoWheelComboBox>
+            <Button Name="RefreshBootselButton" Grid.Column="1" Content="刷新" Command="{Binding RefreshCommand}"/>
+          </Grid>
+          <TextBlock Text="{Binding DriveSummary}" Classes="caption"/>
+          <TextBlock Text="启动盘只标识 RP2350 芯片，请确认所选设备是本项目的 W5500-EVB-Pico2 板卡。" Classes="caption"/>
+        </StackPanel></Border>
+        <Expander Header="烧写日志" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+          <TextBox Name="FirmwareFlashLog" Text="{Binding Log, Mode=OneWay}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap"
+                   MinHeight="100" MaxHeight="220" FontSize="12" FontFamily="Consolas, Microsoft YaHei UI" Margin="0,8,0,0"/>
+        </Expander>
+      </StackPanel>
+    </ScrollViewer>
+    <Border Grid.Row="1" Background="{StaticResource Surface}" BorderBrush="{StaticResource ShellBorder}" BorderThickness="0,1,0,0" Padding="24,16">
+      <StackPanel Spacing="10">
+        <TextBlock Name="FirmwareFlashStatus" Text="{Binding Status}" TextWrapping="Wrap"/>
+        <TextBlock Name="FirmwareFlashError" Text="{Binding Error}" IsVisible="{Binding HasError}" Foreground="{StaticResource DangerText}" TextWrapping="Wrap"/>
+        <ProgressBar Name="FirmwareTransferProgress" Value="{Binding Progress}" Minimum="0" Maximum="100" Height="5"/>
+        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+          <TextBlock Text="传输期间请勿拔线或关闭软件。" Classes="caption" VerticalAlignment="Center"/>
+          <Button Name="CloseFirmwareButton" Grid.Column="1" Content="关闭" Click="CloseClicked" IsEnabled="{Binding CanClose}"/>
+          <Button Name="StartFirmwareButton" Grid.Column="2" Content="开始烧写" Classes="primary" Command="{Binding FlashCommand}"/>
+        </Grid>
+      </StackPanel>
+    </Border>
+  </Grid>
+</Window>

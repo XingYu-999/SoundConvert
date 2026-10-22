@@ -1,0 +1,7 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:controls="using:SoundConvertClient.Controls" x:Class="SoundConvertClient.Views.OutputDeviceSelector" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="8">
+    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10"><controls:NoWheelComboBox Name="OutputEndpointSelector" ItemsSource="{Binding Outputs}" SelectedItem="{Binding SelectedOutput}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" PlaceholderText="选择电脑耳机或扬声器" AutomationProperties.Name="电脑输出设备"/><Button Grid.Column="1" Content="刷新" Command="{Binding RefreshOutputsCommand}" AutomationProperties.Name="刷新输出设备"/></Grid>
+    <TextBlock Text="{Binding OutputName}" FontWeight="SemiBold" TextWrapping="Wrap" ToolTip.Tip="{Binding OutputName}"/>
+    <TextBlock Text="{Binding OutputFormat}" Classes="caption"/>
+  </StackPanel>
+</UserControl>

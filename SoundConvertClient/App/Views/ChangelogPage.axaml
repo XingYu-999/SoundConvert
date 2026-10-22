@@ -1,0 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.ChangelogPage" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="14">
+    <TextBlock Classes="title" Text="更新日志"/>
+    <TextBlock Classes="caption" Text="当前版本的主要功能与使用说明。" TextWrapping="Wrap"/>
+    <Border Classes="card" Padding="24">
+      <StackPanel Spacing="12">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <TextBlock Classes="section" Text="{Binding AppVersion}"/>
+          <TextBlock Classes="section" Text="· 2026-10-22"/>
+        </StackPanel>
+        <TextBlock Text="通过局域网连接 W5500-EVB-Pico2，将 USB 主机的声音转发到电脑播放，并将电脑麦克风或其他输入源的声音传回 USB 主机。" TextWrapping="Wrap"/>
+        <TextBlock Text="支持设备搜索与连接、网络及 USB 声卡配置、播放页输出与稳定性设置、输入调节、Host 媒体快捷控制、托盘操作、运行日志和 USB 固件烧写。" TextWrapping="Wrap"/>
+        <TextBlock Text="Windows 安装包支持当前用户或所有用户安装、保留配置升级、修改与修复；桌面与开始菜单统一显示“USB 音频桥接工具”，卸载时可选择是否删除配置和设备记录。" TextWrapping="Wrap"/>
+        <TextBlock Text="新增取消搜索与取消连接；连接失败或后台中断后清除忙碌状态。发现和未连接 IP 配置改用 UDP 广播，支持同一广播域内的不同 IP 子网，无需额外驱动。" TextWrapping="Wrap"/>
+        <TextBlock Text="新增意外断链后自动重连，设置中默认开启并立即保存；与启动时自动连接分开。空闲或停止播放时也能恢复原设备，失败后逐步延长重试间隔；手动断开、取消或退出会停止重连。" TextWrapping="Wrap"/>
+        <TextBlock Classes="caption" Text="具体音频格式与控制功能以已连接设备及其固件支持情况为准。" TextWrapping="Wrap"/>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

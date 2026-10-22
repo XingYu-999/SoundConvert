@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'SoundConvertClient'">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App/Assets/connected-zh.wav" LogicalName="SoundConvertClient.Assets.connected-zh.wav" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App/Assets/disconnected-zh.wav" LogicalName="SoundConvertClient.Assets.disconnected-zh.wav" />
+  </ItemGroup>
+</Project>

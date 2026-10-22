@@ -1,0 +1,9 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.AudioLevelPanel" x:DataType="vm:IBridgeView">
+ <Border Classes="card"><StackPanel Spacing="8"><TextBlock Classes="section" Text="接收电平（dBFS）"/>
+ <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="8">
+  <TextBlock Text="L"/><ProgressBar Grid.Column="1" Minimum="-90" Maximum="0" Value="{Binding LevelLeftDb}"/><TextBlock Grid.Column="2" Text="{Binding LevelLeftDb, StringFormat={}{0:0.0} dBFS}"/>
+  <TextBlock Grid.Row="1" Text="R"/><ProgressBar Grid.Row="1" Grid.Column="1" Minimum="-90" Maximum="0" Value="{Binding LevelRightDb}"/><TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding LevelRightDb, StringFormat={}{0:0.0} dBFS}"/>
+ </Grid><TextBlock Text="{Binding LevelStatus}" Classes="caption"/><TextBlock Text="{Binding LevelClipStatus}"/>
+ <TextBlock Text="{Binding LevelLeftRmsDb, StringFormat=左 RMS：{0:0.0} dBFS}" Classes="caption"/><TextBlock Text="{Binding LevelRightRmsDb, StringFormat=右 RMS：{0:0.0} dBFS}" Classes="caption"/>
+ </StackPanel></Border>
+</UserControl>

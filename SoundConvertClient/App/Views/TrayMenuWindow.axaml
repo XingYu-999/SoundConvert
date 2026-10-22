@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.TrayMenuWindow" x:DataType="vm:MainViewModel"
+        Title="USB 音频桥接工具 · 托盘菜单" Width="286" MinWidth="286" MaxWidth="286" SizeToContent="Height" CanResize="False"
+        WindowDecorations="None" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="Manual"
+        Background="White" FontFamily="Microsoft YaHei UI, Segoe UI" FontSize="14" RequestedThemeVariant="Light" KeyboardNavigation.TabNavigation="Cycle">
+  <Window.Styles>
+    <Style Selector="Button.trayRound"><Setter Property="Width" Value="36"/><Setter Property="Height" Value="36"/><Setter Property="MinHeight" Value="0"/><Setter Property="MinWidth" Value="0"/><Setter Property="Padding" Value="0"/><Setter Property="CornerRadius" Value="24"/><Setter Property="BorderThickness" Value="2"/><Setter Property="BorderBrush" Value="#909090"/><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="#808080"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/></Style>
+    <Style Selector="Button.trayRound.primary"><Setter Property="Width" Value="48"/><Setter Property="Height" Value="48"/></Style>
+    <Style Selector="Button.trayRound.volume"><Setter Property="BorderThickness" Value="0"/></Style>
+    <Style Selector="Button.trayRound:pointerover /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#F2F4F6"/><Setter Property="BorderBrush" Value="#1677FF"/><Setter Property="Foreground" Value="#1677FF"/></Style>
+    <Style Selector="Button.trayRound:pressed /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#E8EEF7"/></Style>
+    <Style Selector="Button.trayRound:disabled /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="Transparent"/><Setter Property="BorderBrush" Value="#C4C4C4"/><Setter Property="Foreground" Value="#B1B1B1"/></Style>
+    <Style Selector="Button.trayRound.volume:disabled /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="BorderBrush" Value="Transparent"/></Style>
+    <Style Selector="Button.trayRound.muted"><Setter Property="Foreground" Value="#C24B00"/><Setter Property="Background" Value="#FFF2E8"/></Style>
+    <Style Selector="Button.trayItem"><Setter Property="Height" Value="36"/><Setter Property="MinHeight" Value="0"/><Setter Property="Padding" Value="24,0"/><Setter Property="CornerRadius" Value="0"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="#555555"/><Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="HorizontalContentAlignment" Value="Left"/></Style>
+    <Style Selector="Button.trayItem:pointerover /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#F1F3F5"/></Style>
+    <Style Selector="Button.trayItem:disabled /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="#B1B1B1"/></Style>
+    <Style Selector="TextBlock.trayGlyph"><Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets"/><Setter Property="FontSize" Value="18"/><Setter Property="Width" Value="22"/><Setter Property="VerticalAlignment" Value="Center"/><Setter Property="Foreground" Value="#8A8A8A"/></Style>
+    <Style Selector="Border.trayDivider"><Setter Property="Height" Value="1"/><Setter Property="Background" Value="#DEDEDE"/></Style>
+  </Window.Styles>
+  <Border Name="TrayCard" BorderBrush="#DDDDDD" BorderThickness="1" Background="White">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel>
+        <StackPanel Margin="22,18,22,12" Spacing="8">
+          <TextBlock Text="{Binding ConnectedName}" IsVisible="{Binding IsConnected}" HorizontalAlignment="Center" MaxWidth="238" TextTrimming="CharacterEllipsis" FontSize="13" Foreground="#666666" ToolTip.Tip="{Binding ConnectedName}"/>
+          <TextBlock Text="尚未连接开发板" IsVisible="{Binding !IsConnected}" HorizontalAlignment="Center" FontSize="13" Foreground="#888888"/>
+          <Grid ColumnDefinitions="*,*,*" Height="50">
+            <Button Name="TrayPreviousButton" Classes="trayRound hostKey" Command="{Binding HostPreviousTrackCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="Host 上一曲" ToolTip.Tip="Host 上一曲"><Path Width="19" Height="19" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 6,3 L 6,21 M 20,4 L 9,12 L 20,20 Z"/></Button>
+            <Button Name="TrayPlayPauseButton" Grid.Column="1" Classes="trayRound primary hostKey" Command="{Binding HostPlayPauseCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="Host 播放 / 暂停" ToolTip.Tip="Host 播放 / 暂停（播放器状态未知）"><Path Width="24" Height="24" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 4,3 L 4,21 L 14,12 Z M 18,4 L 18,20 M 23,4 L 23,20"/></Button>
+            <Button Name="TrayNextButton" Grid.Column="2" Classes="trayRound hostKey" Command="{Binding HostNextTrackCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="Host 下一曲" ToolTip.Tip="Host 下一曲"><Path Width="19" Height="19" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 18,3 L 18,21 M 4,4 L 15,12 L 4,20 Z"/></Button>
+          </Grid>
+          <Grid ColumnDefinitions="*,*,*">
+            <Button Name="TrayVolumeDownButton" Classes="trayRound volume hostKey" Command="{Binding HostVolumeDownCommand}" HorizontalAlignment="Center" AutomationProperties.Name="Host 音量减" ToolTip.Tip="Host 音量减"><Path Width="21" Height="21" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,12 L 24,12"/></Button>
+            <Button Name="TrayMuteButton" Grid.Column="1" Classes="trayRound volume hostKey" Command="{Binding HostMuteCommand}" HorizontalAlignment="Center" AutomationProperties.Name="Host 静音" ToolTip.Tip="Host 静音键"><Path Width="21" Height="21" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,8 L 24,16 M 24,8 L 17,16"/></Button>
+            <Button Name="TrayVolumeUpButton" Grid.Column="2" Classes="trayRound volume hostKey" Command="{Binding HostVolumeUpCommand}" HorizontalAlignment="Center" AutomationProperties.Name="Host 音量加" ToolTip.Tip="Host 音量加"><Path Width="21" Height="21" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,12 L 24,12 M 20.5,8.5 L 20.5,15.5"/></Button>
+          </Grid>
+        </StackPanel>
+        <Border Classes="trayDivider"/>
+        <StackPanel Margin="22,10,22,10" Spacing="2">
+          <Grid ColumnDefinitions="32,*,Auto" ColumnSpacing="10">
+            <Button Name="TrayOutputMuteButton" Classes="trayRound volume" Classes.muted="{Binding OutputMuted}" IsEnabled="{Binding CanControlOutput}" Click="OutputMuteClicked" AutomationProperties.Name="电脑输出静音" ToolTip.Tip="切换电脑输出静音"><Grid><Path Width="19" Height="19" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" IsVisible="{Binding !OutputMuted}" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,12 L 24,12 M 20.5,8.5 L 20.5,15.5"/><Path Width="19" Height="19" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" IsVisible="{Binding OutputMuted}" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,8 L 24,16 M 24,8 L 17,16"/></Grid></Button>
+            <Slider Name="TrayOutputVolumeSlider" Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding OutputVolume}" IsEnabled="{Binding CanControlOutput}" AutomationProperties.Name="电脑输出音量"><Slider.Resources><SolidColorBrush x:Key="SliderTrackValueFill">#888888</SolidColorBrush><SolidColorBrush x:Key="SliderTrackValueFillPointerOver">#777777</SolidColorBrush><SolidColorBrush x:Key="SliderTrackValueFillPressed">#666666</SolidColorBrush><SolidColorBrush x:Key="SliderThumbBackground">#888888</SolidColorBrush><SolidColorBrush x:Key="SliderThumbBackgroundPointerOver">#777777</SolidColorBrush><SolidColorBrush x:Key="SliderThumbBackgroundPressed">#666666</SolidColorBrush></Slider.Resources></Slider>
+            <TextBlock Grid.Column="2" Text="{Binding OutputVolume,StringFormat={}{0:0}%}" VerticalAlignment="Center" FontSize="11" Foreground="#888888"/>
+          </Grid>
+        </StackPanel>
+        <Border Classes="trayDivider"/>
+        <StackPanel Margin="0,6">
+          <Button Name="TrayOpenButton" Classes="trayItem" Tag="open" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE80F;"/><TextBlock Text="打开主窗口" VerticalAlignment="Center"/></StackPanel></Button>
+          <Button Name="TrayDevicesButton" Classes="trayItem" Tag="devices" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE7F4;"/><TextBlock Text="设备管理" VerticalAlignment="Center"/></StackPanel></Button>
+          <Button Name="TrayAudioButton" Classes="trayItem" Tag="audio" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE768;"/><TextBlock Text="播放输出" VerticalAlignment="Center"/></StackPanel></Button>
+          <Button Name="TrayLogsButton" Classes="trayItem" Tag="logs" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE9D9;"/><TextBlock Text="日志" VerticalAlignment="Center"/></StackPanel></Button>
+        </StackPanel>
+        <Border Classes="trayDivider"/>
+        <StackPanel Margin="0,6">
+          <Button Name="TraySettingsButton" Classes="trayItem" Tag="settings" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE713;"/><TextBlock Text="设置" VerticalAlignment="Center"/></StackPanel></Button>
+          <Button Name="TrayExitButton" Classes="trayItem" Tag="exit" Click="ActionClicked"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Classes="trayGlyph" Text="&#xE7E8;" Foreground="#D45A5A"/><TextBlock Text="退出" VerticalAlignment="Center"/></StackPanel></Button>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+  </Border>
+</Window>

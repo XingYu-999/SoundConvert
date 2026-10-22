@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:views="using:SoundConvertClient.Views" x:Class="SoundConvertClient.Views.InputPage" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="16" MaxWidth="1440" HorizontalAlignment="Stretch">
+    <StackPanel Spacing="5"><TextBlock Classes="title" Text="声音输入"/><TextBlock Classes="muted" Text="电脑麦克风 → 开发板 → USB Host。"/></StackPanel>
+    <Border Classes="card"><StackPanel Spacing="12"><TextBlock Classes="section" Text="电脑麦克风"/>
+      <views:InputDeviceSelector/><TextBlock Text="{Binding InputStatus}" FontWeight="SemiBold" TextWrapping="Wrap"/>
+      <TextBlock Text="{Binding BoardCaptureStatus}" TextWrapping="Wrap"/><TextBlock Text="{Binding BoardCaptureFormat}" Classes="caption"/>
+      <WrapPanel><Button Content="启用麦克风传输" Classes="primary" Command="{Binding StartMicrophoneCommand}" IsEnabled="{Binding CanStartMicrophone}" Margin="0,0,8,8"/><Button Content="停止输入" Command="{Binding StopMicrophoneCommand}" Margin="0,0,0,8"/></WrapPanel>
+      <TextBlock Classes="fieldLabel" Text="麦克风发送增益（应用内）"/><Grid ColumnDefinitions="*,Auto" ColumnSpacing="12"><Slider Value="{Binding MicrophoneGain}" Minimum="0" Maximum="100" AutomationProperties.Name="麦克风发送增益"/><CheckBox Grid.Column="1" Content="发送静音" IsChecked="{Binding MicrophoneMuted}"/></Grid>
+      <Expander Header="检测输入电平"><StackPanel Spacing="10" Margin="0,8,0,0"><Grid ColumnDefinitions="*,Auto" ColumnSpacing="16"><ProgressBar Value="{Binding InputPeak}" Minimum="0" Maximum="1" Height="12"/><Button Grid.Column="1" Content="检测输入（3秒）" Command="{Binding DetectInputCommand}"/></Grid><TextBlock Text="{Binding InputDetection}" Classes="caption"/><TextBlock Classes="caption" Text="只统计电平与采集帧数，不保存录音。"/></StackPanel></Expander>
+    </StackPanel></Border>
+    <Expander Header="高级：USB 麦克风增益、传输与诊断"><StackPanel Spacing="14" Margin="0,10,0,0">
+      <Border Classes="card"><StackPanel Spacing="10"><TextBlock Classes="section" Text="USB 麦克风增益（板端）"/><Slider Minimum="-60" Maximum="0" Value="{Binding CaptureUsbVolumeDb}" IsEnabled="{Binding CanControlCaptureVolume}" AutomationProperties.Name="USB 麦克风板端增益"/><CheckBox Content="USB 麦克风静音" IsChecked="{Binding CaptureUsbMuted}" IsEnabled="{Binding CanControlCaptureVolume}"/><TextBlock Text="{Binding CaptureUsbControlSource}" Classes="caption"/><TextBlock Text="独立于电脑输入增益；Host 可改写，按实际读回值显示。" Classes="caption"/></StackPanel></Border>
+      <Border Classes="card"><StackPanel Spacing="10"><TextBlock Classes="section" Text="传输设置"/><CheckBox Content="播放优先（重新启用输入后生效）" IsChecked="{Binding MicrophonePlaybackFirst}"/><TextBlock Text="{Binding CapturePolicyHint}" Classes="caption"/><TextBlock Text="{Binding CapturePorts}" Classes="caption"/><TextBox Text="{Binding MicrophoneDiagnostics}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="180" MaxHeight="400"/></StackPanel></Border>
+    </StackPanel></Expander>
+  </StackPanel>
+</UserControl>

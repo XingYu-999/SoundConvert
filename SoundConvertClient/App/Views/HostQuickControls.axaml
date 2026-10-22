@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.HostQuickControls" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="8">
+    <TextBlock Classes="fieldLabel" Text="Host 播放器与音量键"/>
+    <WrapPanel>
+      <Button Name="HostPreviousTrackButton" Classes="hostKey" Command="{Binding HostPreviousTrackCommand}" AutomationProperties.Name="Host 上一曲" ToolTip.Tip="Host 上一曲"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 6,3 L 6,21 M 20,4 L 9,12 L 20,20 Z"/><TextBlock Text="上一曲" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+      <Button Name="HostPlayPauseButton" Classes="hostKey" Command="{Binding HostPlayPauseCommand}" AutomationProperties.Name="Host 播放 / 暂停" ToolTip.Tip="Host 播放 / 暂停"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 4,3 L 4,21 L 14,12 Z M 18,4 L 18,20 M 23,4 L 23,20"/><TextBlock Text="播放 / 暂停" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+      <Button Name="HostNextTrackButton" Classes="hostKey" Command="{Binding HostNextTrackCommand}" AutomationProperties.Name="Host 下一曲" ToolTip.Tip="Host 下一曲"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 18,3 L 18,21 M 4,4 L 15,12 L 4,20 Z"/><TextBlock Text="下一曲" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+      <Button Name="HostVolumeDownButton" Classes="hostKey" Command="{Binding HostVolumeDownCommand}" AutomationProperties.Name="Host 音量减" ToolTip.Tip="Host 音量减"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,12 L 24,12"/><TextBlock Text="音量减" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+      <Button Name="HostVolumeUpButton" Classes="hostKey" Command="{Binding HostVolumeUpCommand}" AutomationProperties.Name="Host 音量加" ToolTip.Tip="Host 音量加"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,12 L 24,12 M 20.5,8.5 L 20.5,15.5"/><TextBlock Text="音量加" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+      <Button Name="HostMuteButton" Classes="hostKey" Command="{Binding HostMuteCommand}" AutomationProperties.Name="Host 静音" ToolTip.Tip="Host 静音"><StackPanel Spacing="6" HorizontalAlignment="Center"><Path Width="23" Height="23" Stretch="Uniform" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 3,9 L 7,9 L 13,4 L 13,20 L 7,15 L 3,15 Z M 17,8 L 24,16 M 24,8 L 17,16"/><TextBlock Text="静音" FontSize="11" HorizontalAlignment="Center"/></StackPanel></Button>
+    </WrapPanel>
+    <TextBlock Text="{Binding HostKeyBlockReason}" Classes="caption" MaxLines="1" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding HostKeyBlockReason}"/>
+    <TextBlock Text="{Binding HostKeyFeedback}" TextWrapping="Wrap"/>
+    <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+      <TextBlock Classes="fieldLabel" Text="声卡内部音量" VerticalAlignment="Center"/>
+      <Slider Grid.Column="1" Name="BoardGainSlider" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding BoardVolumePercent}" IsEnabled="{Binding CanControlBoardGain}" AutomationProperties.Name="声卡内部音量"/>
+      <TextBlock Grid.Column="2" Text="{Binding BoardGainReadout}" VerticalAlignment="Center"/>
+      <CheckBox Grid.Column="3" Content="内部静音" IsChecked="{Binding BoardMuted}" IsEnabled="{Binding CanControlBoardGain}"/>
+    </Grid>
+
+  </StackPanel>
+</UserControl>

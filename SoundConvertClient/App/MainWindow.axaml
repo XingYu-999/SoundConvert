@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SoundConvertClient" xmlns:views="using:SoundConvertClient.Views"
+        x:Class="SoundConvertClient.MainWindow" x:DataType="vm:IBridgeView"
+        Width="1400" Height="860" MinWidth="1050" MinHeight="680"
+        Background="{StaticResource Canvas}" Title="USB 音频桥接工具" Icon="avares://SoundConvertClient/Assets/AppIcon.ico" FontFamily="Microsoft YaHei UI, Segoe UI">
+  <Window.Styles>
+    <Style Selector="Border#MainStatusBar"><Setter Property="Background" Value="#667085"/></Style>
+    <Style Selector="Border#MainStatusBar.connected"><Setter Property="Background" Value="#C24B00"/></Style>
+  </Window.Styles>
+  <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,28">
+    <Border Grid.Row="0" Width="{Binding NavigationWidth}" Background="{StaticResource Surface}" BorderBrush="{StaticResource ShellBorder}" BorderThickness="0,0,1,0">
+      <Grid RowDefinitions="*,Auto" Margin="10,0">
+        <StackPanel Spacing="6" Margin="0,10,0,0">
+          <Button Classes="nav" Classes.selected="{Binding IsOverview}" Command="{Binding NavigateCommand}" CommandParameter="主页" ToolTip.Tip="主页" AutomationProperties.Name="主页"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE80F;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="主页" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsDevices}" Command="{Binding NavigateCommand}" CommandParameter="虚拟声卡" ToolTip.Tip="虚拟声卡" AutomationProperties.Name="虚拟声卡"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE88E;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="虚拟声卡" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsAudio}" Command="{Binding NavigateCommand}" CommandParameter="播放" ToolTip.Tip="播放" AutomationProperties.Name="播放"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE767;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="播放" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsInput}" Command="{Binding NavigateCommand}" CommandParameter="输入" ToolTip.Tip="声音输入" AutomationProperties.Name="声音输入"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE720;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="输入" Classes="navLabel"/></StackPanel></Button>
+          <Button Name="OpenFirmwareFlashButton" Classes="nav" Click="FirmwareFlashClicked" ToolTip.Tip="USB 固件烧写（独立窗口）" AutomationProperties.Name="USB 固件烧写"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE896;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="固件烧写" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsLogs}" Command="{Binding NavigateCommand}" CommandParameter="日志" ToolTip.Tip="日志" AutomationProperties.Name="日志"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE9D9;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="日志" Classes="navLabel"/></StackPanel></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Spacing="6" Margin="0,12,0,16">
+          <Border Height="1" Background="{StaticResource ShellBorder}" Margin="10,0,10,10"/>
+          <Button Classes="nav" Classes.selected="{Binding IsChangelog}" Command="{Binding NavigateCommand}" CommandParameter="更新日志" ToolTip.Tip="更新日志" AutomationProperties.Name="更新日志"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE81C;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="更新日志" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsSettings}" Command="{Binding NavigateCommand}" CommandParameter="设置" ToolTip.Tip="设置" AutomationProperties.Name="设置"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE713;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="设置" Classes="navLabel"/></StackPanel></Button>
+          <Button Classes="nav" Classes.selected="{Binding IsAbout}" Command="{Binding NavigateCommand}" CommandParameter="关于" ToolTip.Tip="关于" AutomationProperties.Name="关于"><StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="&#xE946;" Classes="navIcon"/><TextBlock IsVisible="{Binding IsNavigationExpanded}" Text="关于" Classes="navLabel"/></StackPanel></Button>
+          <Button IsVisible="{Binding IsNavigationExpanded}" Classes="nav" Command="{Binding ToggleNavigationCommand}" ToolTip.Tip="收起导航" AutomationProperties.Name="收起导航"><StackPanel Orientation="Horizontal" Spacing="12"><Path Width="22" Height="22" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 10,5 L 4,11 L 10,17 M 18,5 L 12,11 L 18,17"/><TextBlock Text="收起导航" Classes="navLabel"/></StackPanel></Button>
+          <Button IsVisible="{Binding !IsNavigationExpanded}" Classes="nav" Command="{Binding ToggleNavigationCommand}" ToolTip.Tip="展开导航" AutomationProperties.Name="展开导航"><Path Width="22" Height="22" Stroke="{Binding $parent[Button].Foreground}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round" Data="M 4,5 L 10,11 L 4,17 M 12,5 L 18,11 L 12,17"/></Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <ScrollViewer x:Name="MainContentScroller" Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="20" Spacing="14">
+        <Grid>
+          <views:OverviewPage IsVisible="{Binding IsOverview}"/>
+          <views:DevicesPage IsVisible="{Binding IsDevices}"/>
+          <views:AudioPage IsVisible="{Binding IsAudio}"/>
+          <views:InputPage IsVisible="{Binding IsInput}"/>
+          <views:LogsPage IsVisible="{Binding IsLogs}"/>
+          <views:SettingsPage IsVisible="{Binding IsSettings}"/>
+          <views:AboutPage IsVisible="{Binding IsAbout}"/>
+          <views:ChangelogPage IsVisible="{Binding IsChangelog}"/>
+        </Grid>
+      </StackPanel>
+    </ScrollViewer>
+    <Border x:Name="OperationStatusOverlay" Grid.Row="0" Grid.Column="1" ZIndex="10"
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,0,20,20"
+            MinWidth="320" MaxWidth="580" Padding="16,14" CornerRadius="12"
+            Background="{StaticResource Surface}" BorderBrush="#C7D8F5" BorderThickness="1"
+            BoxShadow="0 6 24 0 #260B1F44" IsVisible="{Binding IsBusy}" IsHitTestVisible="{Binding CanCancelOperation}"
+            AutomationProperties.Name="实时操作状态">
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+        <Border Width="36" Height="36" CornerRadius="9" Background="{StaticResource AccentSoft}" VerticalAlignment="Center">
+          <Path Width="20" Height="20" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Stroke="{StaticResource AccentStrong}" StrokeThickness="1.8" StrokeLineCap="Round" StrokeJoin="Round"
+                Data="M 10,2 A 8,8 0 1,1 9.999,2 M 10,5 L 10,10 L 14,12"/>
+        </Border>
+        <StackPanel Grid.Column="1" Spacing="5">
+          <TextBlock Text="操作进行中" FontSize="13" FontWeight="SemiBold"/>
+          <TextBlock Text="{Binding OperationStatus}" FontSize="13" Foreground="{StaticResource TextSecondary}" TextWrapping="Wrap"/>
+          <ProgressBar Height="3" IsIndeterminate="True" Margin="0,3,0,0"/>
+          <WrapPanel><Button Content="取消搜索" Command="{Binding CancelSearchCommand}" IsVisible="{Binding CanCancelSearch}"/><Button Content="取消连接" Command="{Binding CancelConnectionCommand}" IsVisible="{Binding CanCancelConnection}"/></WrapPanel>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Border x:Name="MainStatusBar" Grid.Row="1" Grid.ColumnSpan="2" Classes.connected="{Binding IsConnectionReady}"
+            Padding="12,0" AutomationProperties.Name="状态栏">
+      <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+        <Path Width="14" Height="14" Stretch="Uniform" VerticalAlignment="Center"
+              Stroke="White" StrokeThickness="1.2" StrokeJoin="Round"
+              Data="M 1,1 L 13,1 L 13,10 L 5,10 L 2,13 L 2,10 L 1,10 Z"/>
+        <TextBlock x:Name="StatusBarError" Grid.Column="1" Text="{Binding GlobalError}"
+                   IsVisible="{Binding HasGlobalError}" ToolTip.Tip="{Binding GlobalError}"
+                   Foreground="White" FontSize="12" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+        <TextBlock x:Name="StatusBarMessage" Grid.Column="1" Text="{Binding Status}"
+                   IsVisible="{Binding !HasGlobalError}" ToolTip.Tip="{Binding Status}"
+                   Foreground="White" FontSize="12" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+        <TextBlock Grid.Column="2" Text="{Binding AppVersion}" Foreground="White" FontSize="12"
+                   VerticalAlignment="Center" Margin="12,0,0,0"/>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>

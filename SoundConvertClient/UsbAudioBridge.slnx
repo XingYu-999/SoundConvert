@@ -1,0 +1,1 @@
+<Solution><Project Path="Core/UsbAudioBridge.Core.csproj"/><Project Path="Runtime/SoundConvertClient.Runtime.csproj"/><Project Path="Engine/SoundConvertClient.Engine.csproj"/><Project Path="App/SoundConvertClient.csproj"/><Project Path="Checks/UsbAudioBridge.Checks.csproj"/></Solution>

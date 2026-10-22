@@ -1,0 +1,29 @@
+diff --git a/cJSON.c b/cJSON.c
+index 88c2d95..d941bdb 100644
+--- a/cJSON.c
++++ b/cJSON.c
+@@ -617,6 +617,24 @@ static cJSON_bool print_number(const cJSON * const item, printbuffer * const out
+     {
+         length = sprintf((char*)number_buffer, "%d", item->valueint);
+     }
++    /* UAB: Pico's general float formatter plus sscanf round-trip can stall the
++     * network owner for milliseconds. Preserve uint32 counters and exact UAC
++     * Q8.8 values using bounded integer-only decimal formatting instead. */
++    else if ((d >= 0.0) && (d <= 4294967295.0) && (d == (double)(unsigned long)d))
++    {
++        length = sprintf((char*)number_buffer, "%lu", (unsigned long)d);
++    }
++    else if ((d >= -65536.0) && (d <= 65535.0) &&
++             ((d * 256.0) == (double)(int)(d * 256.0)))
++    {
++        int scaled = (int)(d * 256.0);
++        unsigned int magnitude = (unsigned int)(scaled < 0 ? -scaled : scaled);
++        length = sprintf((char*)number_buffer, "%s%u.%08u", scaled < 0 ? "-" : "",
++                         magnitude >> 8, (magnitude & 255u) * 390625u);
++        while (length > 0 && number_buffer[length - 1] == '0') { --length; }
++        if (length > 0 && number_buffer[length - 1] == '.') { --length; }
++        number_buffer[length] = '\0';
++    }
+     else
+     {
+         /* Try 15 decimal places of precision to avoid nonsignificant nonzero digits */

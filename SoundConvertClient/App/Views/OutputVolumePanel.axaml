@@ -1,0 +1,3 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.OutputVolumePanel" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="10"><Grid ColumnDefinitions="*,Auto"><TextBlock Classes="fieldLabel" Text="输出声卡音量"/><TextBlock Grid.Column="1" Text="{Binding OutputVolume,StringFormat={}{0:0}%}" FontSize="18" FontWeight="SemiBold"/></Grid><Grid ColumnDefinitions="*,Auto" ColumnSpacing="16"><Slider Minimum="0" Maximum="100" Value="{Binding OutputVolume}" IsEnabled="{Binding CanControlOutput}"/><CheckBox Grid.Column="1" Content="静音" IsChecked="{Binding OutputMuted}" IsEnabled="{Binding CanControlOutput}"/></Grid></StackPanel>
+</UserControl>

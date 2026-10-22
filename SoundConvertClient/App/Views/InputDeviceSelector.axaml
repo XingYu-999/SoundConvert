@@ -1,0 +1,9 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:controls="using:SoundConvertClient.Controls" x:Class="SoundConvertClient.Views.InputDeviceSelector" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="8">
+    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10"><controls:NoWheelComboBox Name="InputSourceSelector" ItemsSource="{Binding Inputs}" SelectedItem="{Binding SelectedInput}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" PlaceholderText="选择电脑麦克风" AutomationProperties.Name="电脑麦克风输入设备"><controls:NoWheelComboBox.ItemTemplate><DataTemplate x:DataType="vm:InputEndpoint"><TextBlock Text="{Binding Name}" TextWrapping="Wrap"/></DataTemplate></controls:NoWheelComboBox.ItemTemplate></controls:NoWheelComboBox><Button Grid.Column="1" Content="刷新" Command="{Binding RefreshInputsCommand}" AutomationProperties.Name="刷新输入设备"/></Grid>
+    <TextBlock Text="{Binding InputName}" FontWeight="SemiBold" TextWrapping="Wrap" ToolTip.Tip="{Binding InputName}"/>
+    <TextBlock Text="{Binding InputFormat}" Classes="caption"/>
+    <TextBlock Text="{Binding InputModeHint}" IsVisible="{Binding HasInputModeHint}" Classes="caption"/>
+  </StackPanel>
+</UserControl>
+

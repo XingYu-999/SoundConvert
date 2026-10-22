@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.UsbProfileSelector" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="10">
+    <WrapPanel Name="ProfileCards">
+      <RadioButton Name="DesktopSpeakerProfile" GroupName="UsbDeviceProfile" Classes="profileCard" Tag="desktop_speaker" IsCheckedChanged="ProfileChanged" AutomationProperties.Name="音箱，默认，播放及麦克风" Margin="0,0,10,10"><StackPanel Spacing="7" Width="155"><TextBlock Text="&#xE7F5;" Classes="navIcon" Width="32" FontSize="28" HorizontalAlignment="Left"/><TextBlock Text="音箱（默认）" FontWeight="SemiBold"/><TextBlock Text="播放及麦克风" Classes="caption"/></StackPanel></RadioButton>
+      <RadioButton Name="SpeakerProfile" GroupName="UsbDeviceProfile" Classes="profileCard" Tag="speaker" IsCheckedChanged="ProfileChanged" AutomationProperties.Name="通用音箱，兼容预设" Margin="0,0,10,10"><StackPanel Spacing="7" Width="155"><TextBlock Text="&#xE767;" Classes="navIcon" Width="32" FontSize="28" HorizontalAlignment="Left"/><TextBlock Text="通用音箱" FontWeight="SemiBold"/><TextBlock Text="兼容音箱预设" Classes="caption"/></StackPanel></RadioButton>
+      <RadioButton Name="HeadphonesProfile" GroupName="UsbDeviceProfile" Classes="profileCard" Tag="headphones" IsCheckedChanged="ProfileChanged" AutomationProperties.Name="耳机，仅播放，无 USB 麦克风" Margin="0,0,10,10"><StackPanel Spacing="7" Width="155"><TextBlock Text="&#xE7F6;" Classes="navIcon" Width="32" FontSize="28" HorizontalAlignment="Left"/><TextBlock Text="耳机" FontWeight="SemiBold"/><TextBlock Text="仅播放，无 USB 麦克风" Classes="caption"/></StackPanel></RadioButton>
+      <RadioButton Name="HeadsetProfile" GroupName="UsbDeviceProfile" Classes="profileCard" Tag="headset" IsCheckedChanged="ProfileChanged" AutomationProperties.Name="耳麦，播放及麦克风" Margin="0,0,0,10"><StackPanel Spacing="7" Width="155"><TextBlock Text="&#xE95B;" Classes="navIcon" Width="32" FontSize="28" HorizontalAlignment="Left"/><TextBlock Text="耳麦" FontWeight="SemiBold"/><TextBlock Text="播放及麦克风" Classes="caption"/></StackPanel></RadioButton>
+    </WrapPanel>
+    <TextBlock Text="{Binding UsbDeviceProfile, StringFormat=已选草稿：{0}}"/>
+    <TextBlock Text="{Binding CommittedUsbDeviceProfile, StringFormat=已保存：{0}}" Classes="caption"/>
+    <TextBlock Text="{Binding ActiveUsbDeviceProfile, StringFormat=当前枚举：{0}}" Classes="caption"/>
+    <TextBlock Text="{Binding UsbProfileBlockReason}" Classes="caption"/>
+  </StackPanel>
+</UserControl>

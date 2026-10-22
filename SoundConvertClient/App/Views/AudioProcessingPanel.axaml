@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.AudioProcessingPanel" x:DataType="vm:IBridgeView">
+ <Border Classes="card"><StackPanel Spacing="10"><TextBlock Classes="section" Text="电脑音频处理"/><TextBlock Text="{Binding AudioProcessingStatus}" Classes="caption"/>
+ <CheckBox Content="启用声道处理与 DSP" IsChecked="{Binding AudioProcessingEnabled}"/>
+ <StackPanel Spacing="8" IsEnabled="{Binding AudioProcessingEnabled}">
+ <CheckBox Content="单声道合并 (L+R)/2" IsChecked="{Binding AudioMono}"/>
+ <TextBlock Text="{Binding AudioBalance, StringFormat='左右平衡：{0:0.00}（−1 左 / 0 中 / 1 右；仅衰减）'}"/><Slider Minimum="-1" Maximum="1" Value="{Binding AudioBalance}"/>
+ <CheckBox Content="三段 EQ（120 Hz / 1 kHz / 8 kHz，±12 dB）" IsChecked="{Binding AudioEqEnabled}"/>
+ <StackPanel Spacing="8" IsEnabled="{Binding AudioEqEnabled}">
+ <TextBlock Text="{Binding AudioEqLowDb, StringFormat='低频 120 Hz：{0:0.0} dB'}"/><Slider Minimum="-12" Maximum="12" Value="{Binding AudioEqLowDb}"/>
+ <TextBlock Text="{Binding AudioEqMidDb, StringFormat='中频 1 kHz：{0:0.0} dB'}"/><Slider Minimum="-12" Maximum="12" Value="{Binding AudioEqMidDb}"/>
+ <TextBlock Text="{Binding AudioEqHighDb, StringFormat='高频 8 kHz：{0:0.0} dB'}"/><Slider Minimum="-12" Maximum="12" Value="{Binding AudioEqHighDb}"/>
+ </StackPanel>
+ <CheckBox Content="峰值限幅（无前视，可能改变波形）" IsChecked="{Binding AudioLimiterEnabled}"/>
+ <TextBlock Text="{Binding AudioLimiterCeilingDb, StringFormat='峰值上限：{0:0.0} dBFS'}"/><Slider Minimum="-24" Maximum="0" Value="{Binding AudioLimiterCeilingDb}" IsEnabled="{Binding AudioLimiterEnabled}"/>
+ </StackPanel>
+ <CheckBox Content="限制本应用输出增益" IsChecked="{Binding OutputLimitEnabled}"/>
+ <TextBlock Text="{Binding OutputGainLimit, StringFormat='应用增益上限：{0:P0}'}"/><Slider Minimum="0" Maximum="1" Value="{Binding OutputGainLimit}" IsEnabled="{Binding OutputLimitEnabled}"/>
+ <TextBlock Text="恢复渐变（毫秒；0 为关闭）"/><NumericUpDown Minimum="0" Maximum="5000" Increment="50" Value="{Binding ResumeFadeMs}"/>
+ <TextBlock Classes="caption" Text="处理与上限只作用于本应用；不修改系统默认端点或手机音量，也不代表扬声器物理声压上限。"/>
+ </StackPanel></Border>
+</UserControl>

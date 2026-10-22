@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:views="using:SoundConvertClient.Views" xmlns:controls="using:SoundConvertClient.Controls" x:Class="SoundConvertClient.Views.UsbPage" x:DataType="vm:IBridgeView">
+  <Border Classes="card"><StackPanel Spacing="14">
+    <Grid ColumnDefinitions="*,Auto"><TextBlock Classes="section" Text="声卡配置与模拟"/><Border Grid.Column="1" Classes="badge"><TextBlock Text="{Binding UsbState}"/></Border></Grid>
+    <Grid ColumnDefinitions="Auto,Auto,*,Auto" ColumnSpacing="8"><Button x:Name="UsbToggleButton" Classes="connection" Classes.connected="{Binding IsUsbEmulating}" Content="{Binding UsbButtonText}" Command="{Binding ToggleUsbCommand}" IsEnabled="{Binding CanToggleUsb}" MinWidth="130" Margin="0,0,8,0"/><Button Grid.Column="1" Content="刷新状态" Command="{Binding RefreshCommand}" IsEnabled="{Binding IsConnected}"/><WrapPanel Grid.Column="3" HorizontalAlignment="Right"><Button Classes="primary" Content="保存声卡配置" Command="{Binding SaveUsbCommand}" IsEnabled="{Binding CanEditUsb}" Margin="0,0,8,0"/><Button Content="放弃修改" Command="{Binding DiscardUsbDraftCommand}" IsEnabled="{Binding CanEditUsb}"/></WrapPanel></Grid>
+    <TextBlock Classes="fieldLabel" Text="USB 设备类型"/>
+    <views:UsbProfileSelector/>
+    <TextBlock Text="{Binding UsbHidCompatibilityState}" Classes="caption"/>
+    <CheckBox Content="Windows 媒体键兼容模式（Consumer Control 集合）" IsChecked="{Binding UsbHidConsumerCompat}" IsEnabled="{Binding CanEditHidConsumerCompat}"/>
+    <TextBlock Classes="caption" Text="Windows 耳机／耳麦建议开启；关闭时按设备类型使用 Android 规范的 Headphone／Headset 集合。切换后保存并重新枚举。"/>
+    <TextBlock Classes="fieldLabel" Text="声卡名称"/><TextBox Text="{Binding ProductName}" IsEnabled="{Binding CanEditUsb}" MaxLength="63"/>
+    <TextBlock Classes="fieldLabel" Text="向 USB Host 开放的双声道格式"/>
+    <TextBlock Text="{Binding FormatPolicyHint}" Classes="caption"/>
+    <ItemsControl ItemsSource="{Binding FormatOptions}"><ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel><ItemsControl.ItemTemplate><DataTemplate x:DataType="vm:FormatOption"><CheckBox Content="{Binding Label}" IsChecked="{Binding Selected}" IsEnabled="{Binding CanSelect}" Width="256" Margin="0,0,12,8" ToolTip.Tip="{Binding Hint}"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+    <TextBlock Classes="caption" Text="USB Full-Speed：16-bit 最高 192 kHz，24-bit 最高 96 kHz。输入可自动升采样和扩展位深；需要降低采样率或有效位深的勾选项会排除。"/>
+    <TextBlock Classes="fieldLabel" Text="向 USB Host 开放的麦克风格式（单声道）"/>
+    <TextBlock Text="{Binding CapturePolicyHint}" Classes="caption"/>
+    <ItemsControl ItemsSource="{Binding CaptureFormatOptions}"><ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel><ItemsControl.ItemTemplate><DataTemplate x:DataType="vm:CaptureFormatOption"><CheckBox Content="{Binding Label}" IsChecked="{Binding Selected}" IsEnabled="{Binding CanSelect}" Width="256" Margin="0,0,12,8" ToolTip.Tip="{Binding Hint}"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+    <TextBlock Classes="caption" Text="{Binding UsbDraftState}"/>
+
+    <TextBlock Classes="caption" Text="运行中保存会自动停止模拟、保存配置，再恢复模拟；声卡会在 Host 上重新枚举。"/>
+    <Border Height="1" Background="{StaticResource Border}"/>
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="24"><StackPanel Spacing="6"><TextBlock Classes="fieldLabel" Text="已保存的格式"/><TextBlock Text="{Binding DeclaredFormats}" Classes="caption"/></StackPanel><StackPanel Grid.Column="1" Spacing="6"><TextBlock Classes="fieldLabel" Text="Host 当前格式"/><TextBlock Text="{Binding ActualFormat}" Classes="caption" TextWrapping="Wrap"/></StackPanel></Grid>
+    <Border Height="1" Background="{StaticResource Border}"/>
+    <StackPanel x:Name="IndicatorConfigurationPanel" Spacing="10">
+      <TextBlock Classes="section" Text="LD2 指示灯配置"/>
+      <WrapPanel>
+        <controls:NoWheelComboBox x:Name="IndicatorModeSelector" ItemsSource="{Binding IndicatorModeOptions}" SelectedIndex="{Binding IndicatorModeIndex, Mode=TwoWay}" IsEnabled="{Binding CanEditIndicator}" Width="240" Margin="0,0,12,8" AutomationProperties.Name="LD2 指示灯模式"/>
+        <Button x:Name="IdentifyIndicatorButton" Content="闪灯识别（5 秒）" Command="{Binding IdentifyIndicatorCommand}" IsEnabled="{Binding CanIdentifyIndicator}" Margin="0,0,0,8"/>
+      </WrapPanel>
+      <TextBlock Text="{Binding IndicatorModeDescription}" TextWrapping="Wrap"/>
+      <TextBlock Classes="caption" Text="{Binding IndicatorConfigurationState}"/>
+      <TextBlock Classes="caption" Text="修改后点击上方“保存声卡配置”，重启后保留。闪灯识别会临时覆盖所选模式，结束后自动恢复。音频静音或数字静音数据仍视为有数据流。" TextWrapping="Wrap"/>
+    </StackPanel>
+  </StackPanel></Border>
+</UserControl>

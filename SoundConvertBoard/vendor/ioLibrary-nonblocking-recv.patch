@@ -1,0 +1,21 @@
+diff --git a/Ethernet/socket.c b/Ethernet/socket.c
+index 26070b1..c7b5dd4 100644
+--- a/Ethernet/socket.c
++++ b/Ethernet/socket.c
+@@ -692,12 +692,13 @@ int32_t recv(uint8_t sn, uint8_t * buf, uint16_t len) { //lihan
+                 return SOCK_BUSY;
+             }
+ #else
+-            if (sock_io_mode & (1 << sn)) {
+-                return SOCK_BUSY;
+-            }
+             if (recvsize != 0) {
+                 break;
+             }
++            /* UAB: nonblocking sockets must consume data already available. */
++            if (sock_io_mode & (1 << sn)) {
++                return SOCK_BUSY;
++            }
+ #endif
+         };
+ #if _WIZCHIP_ == 5300

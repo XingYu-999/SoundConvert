@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SoundConvertClient" x:Class="SoundConvertClient.Views.IpAddressDialog" x:DataType="vm:IpAddressEditor"
+        Title="修改 IP 地址" Width="570" SizeToContent="Height" CanResize="False" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource Canvas}">
+  <StackPanel Margin="24" Spacing="14">
+    <TextBlock Text="修改 IP 地址" Classes="title"/>
+    <TextBlock Text="{Binding DeviceLabel}" TextWrapping="Wrap"/>
+    <TextBlock Text="{Binding Identity}" Classes="mono"/>
+    <StackPanel Spacing="14" IsEnabled="{Binding CanSave}">
+      <CheckBox Content="DHCP 自动获取 IP 地址" IsChecked="{Binding Dhcp}"/>
+      <Border Classes="card" IsEnabled="{Binding IsStatic}"><StackPanel Spacing="10">
+        <TextBlock Text="静态 IPv4 地址" Classes="fieldLabel"/><TextBox Text="{Binding Address}" PlaceholderText="例如 192.168.0.22"/>
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+          <StackPanel Spacing="6"><TextBlock Text="前缀长度（24 = 255.255.255.0）" Classes="caption"/><NumericUpDown Value="{Binding Prefix}" Minimum="1" Maximum="30"/></StackPanel>
+          <StackPanel Grid.Column="1" Spacing="6"><TextBlock Text="网关（无网关填 0.0.0.0）" Classes="caption"/><TextBox Text="{Binding Gateway}"/></StackPanel>
+        </Grid>
+      </StackPanel></Border>
+    </StackPanel>
+    <TextBlock Text="通过所选设备的UDP 广播路径修改，无需建立连接。保存会暂停 USB 模拟；验证并确认保存后可连接设备，手动开始模拟。" Classes="caption"/>
+    <TextBlock Text="{Binding Status}" TextWrapping="Wrap" MaxWidth="520"/>
+    <ProgressBar IsIndeterminate="True" IsVisible="{Binding Busy}" Height="3"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button Content="关闭" Click="CloseClicked" IsEnabled="{Binding CanClose}"/>
+      <Button Content="保存 IP 地址" Classes="primary" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave}"/>
+    </StackPanel>
+  </StackPanel>
+</Window>

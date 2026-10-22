@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0-windows</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Core/UsbAudioBridge.Core.csproj" />
+    <PackageReference Include="NAudio" />
+    <EmbeddedResource Include="../App/Assets/*-zh.wav" LogicalName="SoundConvertClient.Assets.%(Filename)%(Extension)" />
+    <None Update="NAudio-WasapiOut.LICENSE.txt;NAudio-WasapiOut.NOTICE.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:views="using:SoundConvertClient.Views" xmlns:controls="using:SoundConvertClient.Controls" x:Class="SoundConvertClient.Views.OverviewPage" x:DataType="vm:IBridgeView">
+  <UserControl.Resources><views:UsbDeviceProfileNameConverter x:Key="UsbDeviceProfileName"/></UserControl.Resources>
+  <StackPanel Spacing="16" MaxWidth="1440" HorizontalAlignment="Stretch">
+    <StackPanel Spacing="5"><TextBlock Classes="title" Text="主页"/><TextBlock Classes="muted" Text="开发板、电脑输出与麦克风，一处掌握。"/></StackPanel>
+    <Border Classes="card"><Grid ColumnDefinitions="*,Auto" ColumnSpacing="16"><StackPanel Spacing="5"><TextBlock Classes="section" Text="{Binding HeaderStatus}"/><TextBlock Text="{Binding ConnectedAddress}" Classes="caption"/><TextBlock Text="{Binding SearchAdapterSummary}" Classes="caption"/></StackPanel><Button Grid.Column="1" Content="管理设备" Command="{Binding NavigateCommand}" CommandParameter="虚拟声卡" VerticalAlignment="Center"/></Grid></Border>
+    <controls:ResponsiveCardPanel>
+      <Border Classes="card"><StackPanel Spacing="12"><TextBlock Classes="section" Text="开发板与 UAC"/>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="16" RowSpacing="10">
+          <StackPanel><TextBlock Classes="caption" Text="固件"/><TextBlock Text="{Binding FirmwareVersion}" TextWrapping="Wrap"/></StackPanel>
+          <StackPanel Grid.Column="1"><TextBlock Classes="caption" Text="USB 音频协议"/><TextBlock Text="{Binding BoardUacVersion}"/></StackPanel>
+          <StackPanel Grid.Row="1"><TextBlock Classes="caption" Text="USB 速度"/><TextBlock Text="{Binding BoardLinkSpeed}" TextWrapping="Wrap"/></StackPanel>
+          <StackPanel Grid.Row="1" Grid.Column="1"><TextBlock Classes="caption" Text="模拟状态"/><TextBlock Text="{Binding UsbState}"/></StackPanel>
+          <StackPanel Grid.Row="2" Grid.ColumnSpan="2"><TextBlock Classes="caption" Text="当前枚举模式"/><TextBlock Text="{Binding ActiveUsbDeviceProfile, Converter={StaticResource UsbDeviceProfileName}}"/><TextBlock Text="{Binding ActualFormat}" Classes="caption"/></StackPanel>
+        </Grid>
+      </StackPanel></Border>
+      <Border Classes="card"><StackPanel Spacing="8"><TextBlock Classes="section" Text="Host 快捷控制"/><views:HostQuickControls/></StackPanel></Border>
+      <Border Classes="card"><StackPanel Spacing="12"><TextBlock Classes="section" Text="Host → 电脑输出"/><views:OutputDeviceSelector/><views:OutputVolumePanel/><TextBlock Text="{Binding PlaybackLabel}" Classes="caption"/><Button Content="输出与稳定性" Command="{Binding NavigateCommand}" CommandParameter="播放" HorizontalAlignment="Left"/></StackPanel></Border>
+      <Border Classes="card"><StackPanel Spacing="12"><TextBlock Classes="section" Text="电脑麦克风 → Host"/><views:InputDeviceSelector/><TextBlock Text="{Binding InputStatus}" TextWrapping="Wrap"/><TextBlock Text="{Binding BoardCaptureStatus}" Classes="caption"/><ProgressBar Value="{Binding InputPeak}" Maximum="1" Minimum="0" Height="10"/><WrapPanel><Button Content="启用麦克风" Command="{Binding StartMicrophoneCommand}" IsEnabled="{Binding CanStartMicrophone}" Margin="0,0,8,8"/><Button Content="停止输入" Command="{Binding StopMicrophoneCommand}" Margin="0,0,8,8"/><Button Content="输入设置" Command="{Binding NavigateCommand}" CommandParameter="输入" Margin="0,0,0,8"/></WrapPanel></StackPanel></Border>
+    </controls:ResponsiveCardPanel>
+  </StackPanel>
+</UserControl>

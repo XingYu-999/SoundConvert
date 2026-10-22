@@ -1,0 +1,5 @@
+build
+!.vscode/*
+
+local_pairing.h
+local_network.h

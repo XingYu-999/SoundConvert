@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <AssemblyName>SoundConvertClient</AssemblyName>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <ApplicationIcon>Assets/AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Core/UsbAudioBridge.Core.csproj"/>
+    <ProjectReference Include="../Runtime/SoundConvertClient.Runtime.csproj"/>
+    <ProjectReference Include="../Engine/SoundConvertClient.Engine.csproj" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Avalonia"/>
+    <PackageReference Include="Avalonia.Desktop"/>
+    <PackageReference Include="Avalonia.Themes.Fluent"/>
+    <PackageReference Include="NAudio"/>
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/AppIcon.ico"/>
+    <None Update="Notices/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+  </ItemGroup>
+  <Target Name="CopyIndependentEngine" AfterTargets="Build">
+    <ItemGroup><EngineFiles Include="../Engine/bin/$(Configuration)/net10.0-windows/**/*" Exclude="../Engine/bin/$(Configuration)/net10.0-windows/win-x64/**/*" /></ItemGroup>
+    <Copy SourceFiles="@(EngineFiles)" DestinationFiles="@(EngineFiles->'$(OutDir)Engine/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="PublishIndependentEngine" AfterTargets="Publish">
+    <MSBuild Projects="../Engine/SoundConvertClient.Engine.csproj" Targets="Publish" Properties="Configuration=$(Configuration);RuntimeIdentifier=$(RuntimeIdentifier);SelfContained=$(SelfContained);PublishDir=$([System.IO.Path]::GetFullPath('$(PublishDir)'))Engine/" />
+  </Target>
+
+</Project>
+
+
+
+

@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:controls="using:SoundConvertClient.Controls" xmlns:views="using:SoundConvertClient.Views" x:Class="SoundConvertClient.Views.AudioPage" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="16" MaxWidth="1440" HorizontalAlignment="Stretch">
+    <TextBlock Classes="title" Text="播放"/>
+    <Border Name="OutputStabilityCard" Classes="card"><StackPanel Spacing="12">
+      <TextBlock Classes="section" Text="输出设备与稳定性"/>
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10"><controls:NoWheelComboBox Name="OutputEndpointSelector" ItemsSource="{Binding Outputs}" SelectedItem="{Binding SelectedOutput}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" PlaceholderText="选择电脑耳机或扬声器" AutomationProperties.Name="电脑输出设备"/><StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8"><Button Content="刷新" Command="{Binding RefreshOutputsCommand}" AutomationProperties.Name="刷新输出设备"/><Button x:Name="ListeningToggleButton" Classes="connection" Classes.connected="{Binding IsMonitoring}" Content="{Binding ListeningButtonText}" Command="{Binding ToggleListeningCommand}" IsEnabled="{Binding CanToggleListening}" MinWidth="130"/><Button Content="Windows 声音设置" Command="{Binding OpenWindowsSoundCommand}"/></StackPanel></Grid><TextBlock Text="{Binding OutputName}" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock Text="{Binding OutputFormat}" Classes="caption"/><views:OutputVolumePanel/>
+      <TextBlock Text="{Binding PlaybackLabel}" FontWeight="SemiBold" TextWrapping="Wrap"/>
+
+      <Border Height="1" Background="{StaticResource Border}"/>
+      <TextBlock Classes="section" Text="稳定性调整"/>
+      <StackPanel Spacing="8">
+      <TextBlock Classes="fieldLabel" Text="缓冲上限"/>
+      <WrapPanel><Button Content="低延迟 20 ms" Command="{Binding BufferProfileCommand}" CommandParameter="20" Margin="0,0,8,8"/><Button Content="均衡 40 ms" Command="{Binding BufferProfileCommand}" CommandParameter="40" Margin="0,0,8,8"/><Button Content="高余量 80 ms" Command="{Binding BufferProfileCommand}" CommandParameter="80" Margin="0,0,8,8"/><StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,8"><NumericUpDown Name="MaximumBufferInput" ShowButtonSpinner="False" AllowSpin="False" Value="{Binding MaximumBufferMs}" Minimum="4" Maximum="100" Width="130" AutomationProperties.Name="缓冲上限毫秒"/><Button Name="ApplyOutputSettingsButton" Content="应用并重新开始输出" Command="{Binding ApplyOutputSettingsCommand}" VerticalAlignment="Center"/></StackPanel></WrapPanel>
+      <TextBlock Classes="caption" Text="{Binding BufferBudgetSummary}"/>
+      <TextBlock Text="{Binding OutputSettingsStatus}" TextWrapping="Wrap"/>
+      </StackPanel>
+      <Expander Header="高级稳定性设置"><StackPanel Spacing="10" Margin="0,10,0,0">
+        <TextBlock Classes="fieldLabel" Text="传输编码"/><controls:NoWheelComboBox Name="TransportCodecSelector" SelectedIndex="{Binding TransportCodecIndex}" HorizontalAlignment="Stretch"><ComboBoxItem Content="PCM 无压缩（保留原始精度）"/><ComboBoxItem Content="IMA ADPCM 有损（4-bit ADPCM）" IsEnabled="{Binding CompressionSupported}" ToolTip.Tip="需要支持 IMA ADPCM 的固件；24 位音频先量化为 16 位"/></controls:NoWheelComboBox>
+        <CheckBox Content="网络纠错（每 4 包增加 1 个修复包）" IsChecked="{Binding NetworkFecEnabled}"/>
+        <TextBlock Classes="fieldLabel" Text="重采样质量"/><controls:NoWheelComboBox ItemsSource="{Binding ResamplingQualities}" SelectedIndex="{Binding ResamplingQualityIndex}" Width="180" HorizontalAlignment="Left"/>
+        <TextBlock Classes="fieldLabel" Text="时间与频差观测"/><controls:NoWheelComboBox Name="ClockModeSelector" ItemsSource="{Binding ClockModes}" SelectedIndex="{Binding ClockModeIndex}" HorizontalAlignment="Stretch" AutomationProperties.Name="时间与频差观测模式"/>
+        <TextBlock Text="{Binding ClockStatus}" TextWrapping="Wrap" Classes="caption"/>
+        <TextBlock Classes="caption" Text="默认使用原有控制。仅观测不调速；实验辅助需三种时钟均合格，失效自动回退。变更模式后应用并重新开始输出；不代表已降低耳机实际延迟。"/>
+        <TextBlock Classes="caption" Text="编码、纠错和重采样修改后需重新开始输出；缓冲上限不代表端到端延迟。"/>
+      </StackPanel></Expander>
+      <Border Height="1" Background="{StaticResource Border}"/>
+      <StackPanel Name="PlaybackLiveMetrics" Spacing="10">
+        <TextBlock Classes="section" Text="诊断"/>
+        <TextBlock Text="{Binding PacketCount, StringFormat=有效音频包：{0}}" Classes="caption"/>
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+          <Border Background="#F5F8FF" CornerRadius="8" Padding="12,10"><controls:MetricTrend Name="BufferTrend" Height="120" Title="缓冲水位" Unit="ms" Value="{Binding PlaybackBufferMs}" UpperLimit="{Binding MaximumBufferMs}" HasValue="{Binding HasPlaybackMetrics}" SampleId="{Binding PlaybackMetricSequence}" Generation="{Binding PlaybackMetricGeneration}" AutomationProperties.Name="缓冲水位最近60秒折线图"/></Border>
+          <Border Grid.Column="1" Background="#F8F5FF" CornerRadius="8" Padding="12,10"><controls:MetricTrend Name="DriftTrend" Height="120" Title="时钟漂移" Unit="ppm" Signed="True" Value="{Binding PlaybackDriftPpm}" HasValue="{Binding HasPlaybackMetrics}" SampleId="{Binding PlaybackMetricSequence}" Generation="{Binding PlaybackMetricGeneration}" AutomationProperties.Name="时钟漂移最近60秒折线图"/></Border>
+        </Grid>
+      </StackPanel>
+    </StackPanel></Border>
+    <Border Classes="card"><StackPanel Spacing="10"><TextBlock Classes="section" Text="Host 快捷控制"/><views:HostMediaPanel/></StackPanel></Border>
+    <StackPanel Spacing="6"><TextBlock Text="{Binding IntegrityText}" Classes="caption"/><TextBlock Text="{Binding AudioProcessingStatus}" Classes="caption"/></StackPanel>
+    <Expander Name="AudioAdvancedExpander" Header="高级：接收电平、声音处理与诊断"><StackPanel Spacing="14" Margin="0,10,0,0">
+      <views:AudioLevelPanel/><views:AudioProcessingPanel/>
+      <Border Classes="card"><StackPanel Spacing="10"><TextBlock Classes="section" Text="本地播放增益"/><TextBlock Classes="caption" Text="应用内增益，独立于 Windows 输出设备音量和声卡内部音量。"/><Grid ColumnDefinitions="*,Auto" ColumnSpacing="16"><Slider Minimum="0" Maximum="100" Value="{Binding Volume}"/><TextBlock Grid.Column="1" Text="{Binding Volume,StringFormat={}{0:0}%}" VerticalAlignment="Center"/></Grid><CheckBox Content="仅静音本地播放" IsChecked="{Binding Muted}"/><TextBlock Text="{Binding ActualFormat}" TextWrapping="Wrap"/><TextBlock Text="{Binding IntegrityText}" Classes="caption"/><TextBlock Text="{Binding OutputBackend}" Classes="caption"/><TextBox Text="{Binding AudioStats}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="180" MaxHeight="360" FontFamily="Cascadia Mono, Consolas"/></StackPanel></Border>
+    </StackPanel></Expander>
+  </StackPanel>
+</UserControl>

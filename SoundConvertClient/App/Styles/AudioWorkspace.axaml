@@ -1,0 +1,37 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="Button.hostKey"><Setter Property="MinWidth" Value="66"/><Setter Property="Height" Value="64"/><Setter Property="Padding" Value="9,8"/><Setter Property="Margin" Value="0,0,6,6"/><Setter Property="CornerRadius" Value="10"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Foreground" Value="{StaticResource AccentStrong}"/><Setter Property="Background" Value="#F5F8FF"/></Style>
+  <Style Selector="RadioButton.profileCard"><Setter Property="Padding" Value="14"/><Setter Property="MinHeight" Value="112"/><Setter Property="BorderThickness" Value="2"/><Setter Property="BorderBrush" Value="{StaticResource Border}"/><Setter Property="Background" Value="{StaticResource Surface}"/><Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="Template"><ControlTemplate><Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}"><Grid ColumnDefinitions="*,20" ColumnSpacing="8"><ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/><TextBlock Name="SelectedMark" Grid.Column="1" Text="✓" Foreground="{StaticResource AccentStrong}" FontWeight="Bold" IsVisible="False" VerticalAlignment="Top"/></Grid></Border></ControlTemplate></Setter>
+  </Style>
+  <Style Selector="RadioButton.profileCard:checked"><Setter Property="BorderBrush" Value="{StaticResource AccentStrong}"/><Setter Property="Background" Value="{StaticResource AccentSoft}"/></Style>
+  <Style Selector="RadioButton.profileCard:checked /template/ TextBlock#SelectedMark"><Setter Property="IsVisible" Value="True"/></Style>
+  <Style Selector="RadioButton.profileCard:focus-visible"><Setter Property="BorderBrush" Value="{StaticResource AccentStrong}"/></Style>
+  <Style Selector="Button.connection"><Setter Property="Background" Value="#16834A"/><Setter Property="Foreground" Value="White"/><Setter Property="BorderThickness" Value="0"/></Style>
+  <Style Selector="Button.connection:pointerover /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#116B3C"/><Setter Property="Foreground" Value="White"/></Style>
+  <Style Selector="Button.connection:pressed /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#0D5730"/></Style>
+  <Style Selector="Button.connection.connected"><Setter Property="Background" Value="#D63D46"/></Style>
+  <Style Selector="Button.connection.connected:pointerover /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#B82C35"/><Setter Property="Foreground" Value="White"/></Style>
+  <Style Selector="Button.connection.connected:pressed /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#98232A"/></Style>
+  <Style Selector="Window"><Setter Property="FontFamily" Value="Microsoft YaHei UI, Segoe UI"/><Setter Property="FontSize" Value="14"/><Setter Property="Foreground" Value="{StaticResource TextPrimary}"/><Setter Property="Background" Value="{StaticResource Canvas}"/></Style>
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#1677FF"/><Setter Property="Foreground" Value="White"/></Style>
+  <Style Selector="Button.primary:pressed /template/ ContentPresenter#PART_ContentPresenter"><Setter Property="Background" Value="#003EB3"/><Setter Property="Foreground" Value="White"/></Style>
+  <Style Selector="Button:disabled"><Setter Property="Opacity" Value="0.55"/></Style>
+  <Style Selector="TextBox"><Setter Property="MinHeight" Value="36"/><Setter Property="CornerRadius" Value="5"/></Style>
+  <Style Selector="ComboBox"><Setter Property="MinHeight" Value="36"/><Setter Property="CornerRadius" Value="5"/></Style>
+  <Style Selector="TextBlock.fieldLabel"><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="FontSize" Value="13"/></Style>
+  <Style Selector="TextBlock.statValue"><Setter Property="FontSize" Value="24"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Foreground" Value="{StaticResource AccentStrong}"/></Style>
+  <Style Selector="Border.success"><Setter Property="Background" Value="{StaticResource SuccessSurface}"/><Setter Property="CornerRadius" Value="5"/><Setter Property="Padding" Value="9,5"/></Style>
+  <Style Selector="Border.success TextBlock"><Setter Property="Foreground" Value="{StaticResource SuccessText}"/></Style>
+  <Style Selector="Border.warning"><Setter Property="Background" Value="{StaticResource WarningSurface}"/><Setter Property="BorderBrush" Value="#F5DEAE"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="8"/><Setter Property="Padding" Value="14"/></Style>
+  <Style Selector="Border.warning TextBlock"><Setter Property="Foreground" Value="{StaticResource WarningText}"/></Style>
+  <Style Selector="Border.stepNumber"><Setter Property="Width" Value="36"/><Setter Property="Height" Value="36"/><Setter Property="CornerRadius" Value="12"/><Setter Property="Background" Value="#EDF3FD"/><Setter Property="VerticalAlignment" Value="Top"/></Style>
+  <Style Selector="Border.stepNumber TextBlock"><Setter Property="HorizontalAlignment" Value="Center"/><Setter Property="VerticalAlignment" Value="Center"/><Setter Property="FontWeight" Value="Bold"/><Setter Property="Foreground" Value="#2563EB"/></Style>
+  <Style Selector="Border.stepNumber.complete"><Setter Property="Background" Value="#EAF7EF"/></Style>
+  <Style Selector="Border.stepNumber.complete TextBlock"><Setter Property="Foreground" Value="#18794E"/></Style>
+  <Style Selector="Button.stepAction"><Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="VerticalAlignment" Value="Center"/><Setter Property="Padding" Value="10,8"/></Style>
+  <Style Selector="Border.deviceRow"><Setter Property="Padding" Value="14,12"/><Setter Property="BorderBrush" Value="{StaticResource Border}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="8"/></Style>
+  <Style Selector="ListBox"><Setter Property="BorderBrush" Value="{StaticResource Border}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="6"/></Style>
+  <Style Selector="ListBoxItem"><Setter Property="Padding" Value="12,8"/></Style>
+  <Style Selector="Expander"><Setter Property="HorizontalAlignment" Value="Stretch"/></Style>
+  <Style Selector="ToggleSwitch"><Setter Property="OnContent" Value="已开启"/><Setter Property="OffContent" Value="已关闭"/></Style>
+</Styles>

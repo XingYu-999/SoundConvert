@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:SoundConvertClient" xmlns:views="using:SoundConvertClient.Views" x:Class="SoundConvertClient.Views.AudioControlsPanel" x:DataType="vm:IBridgeView">
+  <StackPanel Spacing="12">
+    <views:HostMediaPanel/>
+    <Border Height="1" Background="{StaticResource Border}"/>
+    <Grid ColumnDefinitions="*,Auto"><TextBlock Classes="fieldLabel" Text="声卡内部音量"/><TextBlock Grid.Column="1" Text="{Binding BoardGainReadout}" FontWeight="SemiBold"/></Grid>
+    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+      <Slider Name="BoardGainSlider" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding BoardVolumePercent}" IsEnabled="{Binding CanControlBoardGain}"/>
+      <CheckBox Grid.Column="1" Content="内部静音" IsChecked="{Binding BoardMuted}" IsEnabled="{Binding CanControlBoardGain}"/>
+    </Grid>
+    <TextBlock Classes="caption" Text="上电默认80%，范围0–100%；运行时配置，独立于USB Host系统音量。USB软断连保留，开发板重启恢复默认。" TextWrapping="Wrap"/>
+  </StackPanel>
+</UserControl>
